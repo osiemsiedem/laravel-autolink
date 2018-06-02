@@ -1,0 +1,39 @@
+{
+    "name": "osiemsiedem/laravel-autolink",
+    "keywords": ["laravel", "autolink", "html", "email", "url", "www"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marek Szymczuk",
+            "email": "marek@osiemsiedem.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/support": "5.5.*|5.6.*",
+        "symfony/polyfill-mbstring": "^1.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0|^7.0"
+    },
+    "autoload": {
+        "psr-4" : {
+            "OsiemSiedem\\Autolink\\" : "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OsiemSiedem\\Tests\\Autolink\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OsiemSiedem\\Autolink\\AutolinkServiceProvider"
+            ]
+        }
+    }
+}

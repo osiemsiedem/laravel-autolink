@@ -1,5 +1,10 @@
 # Release Notes
 
-## v1.0.0 (2018-05-29)
+## v1.1.0 (2018-06-03)
 
-Initial release.
+- Automatically register the facade.
+- Added the configuration file.
+
+## v1.0.0 (2018-06-02)
+
+- Initial release.

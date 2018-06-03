@@ -54,9 +54,11 @@ abstract class AbstractParser implements Parser
                 }
 
                 $end--;
-            } else {
-                break;
+
+                continue;
             }
+
+            break;
         }
 
         if ($end === $start) {

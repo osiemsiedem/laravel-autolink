@@ -54,9 +54,11 @@ class UrlParser extends AbstractUrlParser
         while ($start > 0) {
             if (ctype_alpha($cursor->getCharacter($start - 1))) {
                 $start--;
-            } else {
-                break;
+
+                continue;
             }
+
+            break;
         }
 
         if ( ! $this->validateProtocol($cursor, $start)) {

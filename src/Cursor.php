@@ -140,7 +140,7 @@ class Cursor implements Iterator
     {
         $text = $this->getText($this->getPosition());
 
-        return preg_match($pattern, $text, $matches) > 0;
+        return preg_match($pattern, $text) > 0;
     }
 
     /**

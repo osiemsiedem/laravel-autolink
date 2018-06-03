@@ -33,7 +33,10 @@
         "laravel": {
             "providers": [
                 "OsiemSiedem\\Autolink\\AutolinkServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Autolink": "OsiemSiedem\\Autolink\\Facades\\Autolink"
+            }
         }
     }
 }

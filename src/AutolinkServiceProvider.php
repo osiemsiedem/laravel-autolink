@@ -6,12 +6,6 @@ namespace OsiemSiedem\Autolink;
 
 use Illuminate\Support\ServiceProvider;
 
-use OsiemSiedem\Autolink\Parsers\UrlParser;
-use OsiemSiedem\Autolink\Parsers\WwwParser;
-use OsiemSiedem\Autolink\Filters\TrimFilter;
-use OsiemSiedem\Autolink\Parsers\EmailParser;
-use OsiemSiedem\Autolink\Filters\LimitLengthFilter;
-
 class AutolinkServiceProvider extends ServiceProvider
 {
     /**
@@ -22,6 +16,22 @@ class AutolinkServiceProvider extends ServiceProvider
     protected $defer = true;
 
     /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/autolink.php', 'autolink'
+        );
+
+        $this->publishes([
+            __DIR__.'/../config/autolink.php' => config_path('autolink.php'),
+        ], 'config');
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
@@ -29,14 +39,19 @@ class AutolinkServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('osiemsiedem.autolink', function ($app) {
+            $config = $app['config']->get('autolink');
+
             $autolink = new Autolink;
 
-            $autolink->addFilter(new TrimFilter);
-            $autolink->addFilter(new LimitLengthFilter);
+            $autolink->ignore($config['ignored']);
 
-            $autolink->addParser(new UrlParser);
-            $autolink->addParser(new WwwParser);
-            $autolink->addParser(new EmailParser);
+            foreach ($config['filters'] as $filter) {
+                $autolink->addFilter(new $filter);
+            }
+
+            foreach ($config['parsers'] as $parser) {
+                $autolink->addParser(new $parser);
+            }
 
             return $autolink;
         });

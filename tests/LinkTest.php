@@ -57,8 +57,6 @@ final class LinkTest extends TestCase
     {
         $link = new Link('<b>87</b>', 'http://example.com', ['class' => 'foo bar', 'hidden' => null], 0, 0);
 
-        $attributes = $link->getAttributes();
-
         $this->assertEquals('<a class="foo bar" hidden href="http://example.com">&lt;b&gt;87&lt;/b&gt;</a>', $link->toHtml());
     }
 }

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\HtmlString;
+use OsiemSiedem\Autolink\Facades\Autolink;
 
 if ( ! function_exists('autolink')) {
     /**
@@ -14,6 +15,6 @@ if ( ! function_exists('autolink')) {
      */
     function autolink(string $text, callable $callback = null): HtmlString
     {
-        return app('osiemsiedem.autolink')->convert($text, $callback);
+        return Autolink::convert($text, $callback);
     }
 }

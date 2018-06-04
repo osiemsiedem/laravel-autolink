@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OsiemSiedem\Tests\Autolink\Filters;
 
 use OsiemSiedem\Autolink\Link;
-use PHPUnit\Framework\TestCase;
+use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Contracts\Filter;
 use OsiemSiedem\Autolink\Filters\LimitLengthFilter;
 

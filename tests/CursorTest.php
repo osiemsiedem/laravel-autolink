@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink;
 
-use PHPUnit\Framework\TestCase;
 use OsiemSiedem\Autolink\Cursor;
+use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class CursorTest extends TestCase
 {

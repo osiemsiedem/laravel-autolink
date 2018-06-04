@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OsiemSiedem\Tests\Autolink;
 
 use OsiemSiedem\Autolink\Link;
-use PHPUnit\Framework\TestCase;
+use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class LinkTest extends TestCase
 {

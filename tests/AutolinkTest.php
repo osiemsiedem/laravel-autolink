@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace OsiemSiedem\Tests\Autolink;
 
 use OsiemSiedem\Autolink\Link;
-use PHPUnit\Framework\TestCase;
 use OsiemSiedem\Autolink\Autolink;
+use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Parsers\UrlParser;
 use OsiemSiedem\Autolink\Parsers\WwwParser;
 use OsiemSiedem\Autolink\Parsers\EmailParser;
+use OsiemSiedem\Autolink\Filters\LimitLengthFilter;
 
 final class AutolinkTest extends TestCase
 {
@@ -328,5 +329,35 @@ final class AutolinkTest extends TestCase
     {
         $this->assertEquals("'<a href=\"http://example.com\">http://example.com</a>'", $this->autolink->convert("'http://example.com'"));
         $this->assertEquals('"<a href="http://example.com">http://example.com</a>"', $this->autolink->convert('"http://example.com"'));
+    }
+
+    public function testAddFilter(): void
+    {
+        $url = 'http://example.com/some/very/long/link?foo=bar';
+
+        $autolink = new Autolink;
+        $autolink->addParser(new UrlParser);
+
+        $autolink->convert($url, function ($link) {
+            $this->assertEquals('http://example.com/some/very/long/link?foo=bar', $link->getTitle());
+
+            return $link;
+        });
+
+        $autolink->addFilter(new LimitLengthFilter);
+
+        $autolink->convert($url, function ($link) {
+            $this->assertEquals('http://example.com/some/very/l...', $link->getTitle());
+
+            return $link;
+        });
+    }
+
+    public function testIgnore(): void
+    {
+        $this->autolink->ignore(['a']);
+
+        $this->assertEquals('<a>http://example.com', $this->autolink->convert('<a>http://example.com'));
+        $this->assertEquals('<b><a href="http://example.com">http://example.com</a></b> <a>http://example.com</a>', $this->autolink->convert('<b>http://example.com</b> <a>http://example.com</a>'));
     }
 }

@@ -56,7 +56,7 @@ class Autolink
     /**
      * Set the ignored tags.
      *
-     * @param  array  $ignore
+     * @param  array  $ignored
      * @return $this
      */
     public function ignore(array $ignored): self
@@ -70,7 +70,7 @@ class Autolink
      * Convert the URLs into clickable links.
      *
      * @param  string  $text
-     * @param  callable  $callback
+     * @param  callable|null  $callback
      * @return \Illuminate\Support\HtmlString
      */
     public function convert(string $text, callable $callback = null): HtmlString

@@ -146,7 +146,7 @@ class Cursor implements Iterator
     /**
      * Get the character.
      *
-     * @param  int  $position
+     * @param  int|null  $position
      * @return string|null
      */
     public function getCharacter(int $position = null): ?string

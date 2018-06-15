@@ -47,7 +47,7 @@ class Autolink
     public function addParser(Parser $parser): self
     {
         foreach ($parser->getCharacters() as $character) {
-            $this->parsers[$character] = $parser;
+            $this->parsers[$character][] = $parser;
         }
 
         return $this;
@@ -112,14 +112,18 @@ class Autolink
                 continue;
             }
 
-            $parser = array_get($this->parsers, $character);
+            $parsers = array_get($this->parsers, $character);
 
-            if (is_null($parser)) {
+            if (is_null($parsers)) {
                 continue;
             }
 
-            if ($link = $parser->parse($cursor)) {
-                $links[] = $link;
+            foreach ($parsers as $parser) {
+                if ($link = $parser->parse($cursor)) {
+                    $links[] = $link;
+
+                    break;
+                }
             }
         }
 

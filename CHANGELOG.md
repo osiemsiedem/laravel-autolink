@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.3.0 (2018-06-15)
+
+- Added support for multiple parsers with the same character.
+
 ## v1.2.0 (2018-06-03)
 
 - Change the version constraint to `^1.0` of the `symfony/polyfill-mbstring` package.

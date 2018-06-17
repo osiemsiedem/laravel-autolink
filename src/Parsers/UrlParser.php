@@ -4,11 +4,22 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Parsers;
 
-use OsiemSiedem\Autolink\Link;
 use OsiemSiedem\Autolink\Cursor;
+use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Elements\UrlElement;
 
 class UrlParser extends AbstractUrlParser
 {
+    /**
+     * @var bool
+     */
+    protected $allowShort = true;
+
+    /**
+     * @var array
+     */
+    protected $protocols = ['http://', 'https://'];
+
     /**
      * Get the characters.
      *
@@ -23,21 +34,19 @@ class UrlParser extends AbstractUrlParser
      * Parse the text.
      *
      * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Link|null
+     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
-    public function parse(Cursor $cursor): ?Link
+    public function parse(Cursor $cursor): ?Element
     {
         $start = $cursor->getPosition();
 
-        if (($cursor->getLength() - $start) < 4 || ! $cursor->match('#://#i')) {
+        if ($cursor->getText($start, 3) !== '://') {
             return null;
         }
 
-        if ( ! $this->validateDomain($cursor, $start + 3)) {
+        if ( ! $this->validateDomain($cursor, $start + 3, $this->allowShort)) {
             return null;
         }
-
-        $state = $cursor->getState();
 
         while ($cursor->valid()) {
             $character = $cursor->getCharacter();
@@ -65,15 +74,11 @@ class UrlParser extends AbstractUrlParser
             return null;
         }
 
-        if ($position = $this->trimMoreDelimeters($cursor, $start, $end)) {
-            $url = $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
+        $position = $this->trimMoreDelimeters($cursor, $start, $end);
 
-            return new Link($title, $url, [], $position['start'], $position['end']);
-        }
+        $url = $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
 
-        $cursor->setState($state);
-
-        return null;
+        return new UrlElement($title, $url, $position['start'], $position['end']);
     }
 
     /**
@@ -85,8 +90,8 @@ class UrlParser extends AbstractUrlParser
      */
     protected function validateProtocol(Cursor $cursor, int $start): bool
     {
-        $text = $cursor->getText($start, 8);
+        $text = strtolower($cursor->getText($start, 8));
 
-        return preg_match('#^https?://#i', $text) > 0;
+        return starts_with($text, $this->protocols);
     }
 }

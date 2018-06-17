@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Parsers;
 
-use OsiemSiedem\Autolink\Link;
 use OsiemSiedem\Autolink\Cursor;
+use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Elements\UrlElement;
 
 class WwwParser extends AbstractUrlParser
 {
+    /**
+     * @var bool
+     */
+    protected $allowShort = false;
+
     /**
      * Get the characters.
      *
@@ -23,25 +29,27 @@ class WwwParser extends AbstractUrlParser
      * Parse the text.
      *
      * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Link|null
+     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
-    public function parse(Cursor $cursor): ?Link
+    public function parse(Cursor $cursor): ?Element
     {
         $start = $cursor->getPosition();
 
-        if (($cursor->getLength() - $start) < 4 || ! $cursor->match('/www\./i')) {
+        if ($cursor->getLength() - $start < 8) {
             return null;
         }
 
-        if ( ! $this->validateDomain($cursor, $start, false)) {
+        if (strtolower($cursor->getText($start, 4)) !== 'www.') {
             return null;
         }
 
-        $state = $cursor->getState();
+        if ( ! $this->validateDomain($cursor, $start, $this->allowShort)) {
+            return null;
+        }
 
         $boundary = $cursor->getCharacter($start - 1);
 
-        if ( ! is_null($boundary) && ! $this->isWhitespace($boundary) && ! ctype_punct($boundary)) {
+        if ( ! is_null($boundary) && ! ctype_space($boundary) && ! ctype_punct($boundary)) {
             return null;
         }
 
@@ -57,16 +65,10 @@ class WwwParser extends AbstractUrlParser
 
         $end = $cursor->getPosition();
 
-        if ($position = $this->trimMoreDelimeters($cursor, $start, $end)) {
-            $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
+        $position = $this->trimMoreDelimeters($cursor, $start, $end);
 
-            $url = "http://{$title}";
+        $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
 
-            return new Link($title, $url, [], $position['start'], $position['end']);
-        }
-
-        $cursor->setState($state);
-
-        return null;
+        return new UrlElement($title, "http://{$title}", $position['start'], $position['end']);
     }
 }

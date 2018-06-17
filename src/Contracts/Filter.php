@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Contracts;
 
-use OsiemSiedem\Autolink\Link;
-
 interface Filter
 {
     /**
-     * Filter the link.
+     * Filter the element.
      *
-     * @param  \OsiemSiedem\Autolink\Link  $link
-     * @return \OsiemSiedem\Autolink\Link
+     * @param  \OsiemSiedem\Autolink\Contracts\Element  $element
+     * @return \OsiemSiedem\Autolink\Contracts\Element
      */
-    public function filter(Link $link): Link;
+    public function filter(Element $element): Element;
 }

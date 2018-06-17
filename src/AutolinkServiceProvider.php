@@ -38,22 +38,32 @@ class AutolinkServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('osiemsiedem.autolink', function ($app) {
+        $this->app->singleton('osiemsiedem.autolink.parser', function ($app) {
             $config = $app['config']->get('autolink');
 
-            $autolink = new Autolink;
+            $parser = new Parser;
 
-            $autolink->ignore($config['ignored']);
+            $parser->setIgnoredTags($config['ignored_tags']);
 
-            foreach ($config['filters'] as $filter) {
-                $autolink->addFilter(new $filter);
+            foreach ($config['parsers'] as $elementParser) {
+                $parser->addElementParser(new $elementParser);
             }
 
-            foreach ($config['parsers'] as $parser) {
-                $autolink->addParser(new $parser);
+            return $parser;
+        });
+
+        $this->app->singleton('osiemsiedem.autolink.renderer', function ($app) {
+            $renderer = new HtmlRenderer;
+
+            foreach ($app['config']->get('autolink.filters') as $filter) {
+                $renderer->addFilter(new $filter);
             }
 
-            return $autolink;
+            return $renderer;
+        });
+
+        $this->app->singleton('osiemsiedem.autolink', function ($app) {
+            return new Autolink($app['osiemsiedem.autolink.parser'], $app['osiemsiedem.autolink.renderer']);
         });
     }
 
@@ -64,6 +74,10 @@ class AutolinkServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['osiemsiedem.autolink'];
+        return [
+            'osiemsiedem.autolink.parser',
+            'osiemsiedem.autolink.renderer',
+            'osiemsiedem.autolink',
+        ];
     }
 }

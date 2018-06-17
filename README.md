@@ -15,6 +15,16 @@ A Laravel package for converting URLs in a given string of text into clickable l
 composer require osiemsiedem/laravel-autolink
 ```
 
+## Usage
+
+```php
+use OsiemSiedem\Autolink\Facades\Autolink;
+
+echo Autolink::convert('Check this out - www.example.com. This will be ignored - <a href="http://example.com">My awesome website</a>.');
+
+// Check this out - <a href="http://www.example.com">example.com</a>. This will be ignored - <a href="http://example.com">My awesome website</a>.
+```
+
 ## Testing
 
 ```

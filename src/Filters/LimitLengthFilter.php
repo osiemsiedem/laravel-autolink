@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Filters;
 
-use OsiemSiedem\Autolink\Link;
 use OsiemSiedem\Autolink\Contracts\Filter;
+use OsiemSiedem\Autolink\Contracts\Element;
 
 class LimitLengthFilter implements Filter
 {
@@ -33,19 +33,19 @@ class LimitLengthFilter implements Filter
     }
 
     /**
-     * Filter the link.
+     * Filter the element.
      *
-     * @param  \OsiemSiedem\Autolink\Link  $link
-     * @return \OsiemSiedem\Autolink\Link
+     * @param  \OsiemSiedem\Autolink\Contracts\Element  $element
+     * @return \OsiemSiedem\Autolink\Contracts\Element
      */
-    public function filter(Link $link): Link
+    public function filter(Element $element): Element
     {
-        $title = $link->getTitle();
+        $title = $element->getTitle();
 
         $title = str_limit($title, $this->limit, $this->end);
 
-        $link->setTitle($title);
+        $element->setTitle($title);
 
-        return $link;
+        return $element;
     }
 }

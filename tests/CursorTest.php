@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OsiemSiedem\Tests\Autolink;
 
 use OsiemSiedem\Autolink\Cursor;
-use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class CursorTest extends TestCase
 {

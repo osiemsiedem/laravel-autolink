@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Parsers;
 
-use OsiemSiedem\Autolink\Link;
 use OsiemSiedem\Autolink\Cursor;
+use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Elements\EmailElement;
 
 class EmailParser extends AbstractParser
 {
@@ -23,9 +24,9 @@ class EmailParser extends AbstractParser
      * Parse the text.
      *
      * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Link|null
+     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
-    public function parse(Cursor $cursor): ?Link
+    public function parse(Cursor $cursor): ?Element
     {
         $state = $cursor->getState();
 
@@ -93,16 +94,12 @@ class EmailParser extends AbstractParser
             return null;
         }
 
-        if ($position = $this->trimDelimeters($cursor, $start, $end)) {
-            $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
+        $position = $this->trimDelimeters($cursor, $start, $end);
 
-            $url = "mailto:{$title}";
+        $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
 
-            return new Link($title, $url, [], $position['start'], $position['end']);
-        }
+        $url = "mailto:{$title}";
 
-        $cursor->setState($state);
-
-        return null;
+        return new EmailElement($title, $url, $position['start'], $position['end']);
     }
 }

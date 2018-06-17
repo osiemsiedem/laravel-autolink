@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink;
 
-use OsiemSiedem\Autolink\Link;
+use OsiemSiedem\Autolink\Parser;
 use OsiemSiedem\Autolink\Autolink;
-use OsiemSiedem\Tests\Autolink\TestCase;
+use OsiemSiedem\Autolink\HtmlRenderer;
+use OsiemSiedem\Autolink\Contracts\Element;
 use OsiemSiedem\Autolink\Parsers\UrlParser;
 use OsiemSiedem\Autolink\Parsers\WwwParser;
 use OsiemSiedem\Autolink\Parsers\EmailParser;
-use OsiemSiedem\Autolink\Filters\LimitLengthFilter;
 
 final class AutolinkTest extends TestCase
 {
@@ -18,16 +18,24 @@ final class AutolinkTest extends TestCase
 
     public function setUp(): void
     {
-        $this->autolink = new Autolink;
+        $parser = new Parser;
+        $parser->addElementParser(new UrlParser);
+        $parser->addElementParser(new WwwParser);
+        $parser->addElementParser(new EmailParser);
 
-        $this->autolink->addParser(new UrlParser);
-        $this->autolink->addParser(new WwwParser);
-        $this->autolink->addParser(new EmailParser);
+        $renderer = new HtmlRenderer;
+
+        $this->autolink = new Autolink($parser, $renderer);
     }
 
     public function tearDown(): void
     {
         $this->autolink = null;
+    }
+
+    private function e(string $text): string
+    {
+        return htmlentities($text, ENT_QUOTES, 'UTF-8', false);
     }
 
     private function generateLink(string $title, string $href = null): string
@@ -40,7 +48,7 @@ final class AutolinkTest extends TestCase
             $href = 'http://'.$href;
         }
 
-        return '<a href="'.e($href).'">'.e($title).'</a>';
+        return '<a href="'.$this->e($href).'">'.$this->e($title).'</a>';
     }
 
     public function testEscapesQuotes(): void
@@ -125,15 +133,15 @@ final class AutolinkTest extends TestCase
 
     public function testCallback(): void
     {
-        $link = $this->autolink->convert('Find ur favorite pokeman @ http://www.example.com', function ($link) {
-            $this->assertInstanceOf(Link::class, $link);
+        $link = (string) $this->autolink->convert('Find ur favorite pokeman @ http://www.example.com', function ($element) {
+            $this->assertInstanceOf(Element::class, $element);
 
-            $this->assertEquals('http://www.example.com', $link->getTitle());
-            $this->assertEquals('http://www.example.com', $link->getUrl());
+            $this->assertEquals('http://www.example.com', $element->getTitle());
+            $this->assertEquals('http://www.example.com', $element->getUrl());
 
-            $link->setTitle('POKEMAN WEBSITE');
+            $element->setTitle('POKEMAN WEBSITE');
 
-            return $link;
+            return $element;
         });
 
         $this->assertEquals('Find ur favorite pokeman @ <a href="http://www.example.com">POKEMAN WEBSITE</a>', $link);
@@ -182,9 +190,9 @@ final class AutolinkTest extends TestCase
 
         $input = "A wikipedia link ({$url})";
 
-        $expected = "A wikipedia link (<a href=\"{$url}\">{$url}</a>)";
+        $expected = "A wikipedia link (<a href=\"{$this->e($url)}\">{$this->e($url)}</a>)";
 
-        $this->assertEquals($expected, $this->autolink->convert($input));
+        $this->assertEquals($expected, (string) $this->autolink->convert($input));
     }
 
     public function testTheFamousNbsp(): void
@@ -219,7 +227,7 @@ final class AutolinkTest extends TestCase
         $url = 'http://example.com/?foo=¥&bar=1';
         $link = $this->generateLink($url);
 
-        $this->assertEquals("{$link} and", $this->autolink->convert("{$url} and"));
+        $this->assertEquals("{$link} and", (string) $this->autolink->convert("{$url} and"));
     }
 
     public function testUrlsWith4WideUTF8Characters(): void
@@ -329,35 +337,5 @@ final class AutolinkTest extends TestCase
     {
         $this->assertEquals("'<a href=\"http://example.com\">http://example.com</a>'", $this->autolink->convert("'http://example.com'"));
         $this->assertEquals('"<a href="http://example.com">http://example.com</a>"', $this->autolink->convert('"http://example.com"'));
-    }
-
-    public function testAddFilter(): void
-    {
-        $url = 'http://example.com/some/very/long/link?foo=bar';
-
-        $autolink = new Autolink;
-        $autolink->addParser(new UrlParser);
-
-        $autolink->convert($url, function ($link) {
-            $this->assertEquals('http://example.com/some/very/long/link?foo=bar', $link->getTitle());
-
-            return $link;
-        });
-
-        $autolink->addFilter(new LimitLengthFilter);
-
-        $autolink->convert($url, function ($link) {
-            $this->assertEquals('http://example.com/some/very/l...', $link->getTitle());
-
-            return $link;
-        });
-    }
-
-    public function testIgnore(): void
-    {
-        $this->autolink->ignore(['a']);
-
-        $this->assertEquals('<a>http://example.com', $this->autolink->convert('<a>http://example.com'));
-        $this->assertEquals('<b><a href="http://example.com">http://example.com</a></b> <a>http://example.com</a>', $this->autolink->convert('<b>http://example.com</b> <a>http://example.com</a>'));
     }
 }

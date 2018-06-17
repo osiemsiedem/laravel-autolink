@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Contracts;
 
-use OsiemSiedem\Autolink\Link;
 use OsiemSiedem\Autolink\Cursor;
 
 interface Parser
@@ -20,7 +19,7 @@ interface Parser
      * Parse the text.
      *
      * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Link|null
+     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
-    public function parse(Cursor $cursor): ?Link;
+    public function parse(Cursor $cursor): ?Element;
 }

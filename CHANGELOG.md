@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.0.1 (2018-09-04)
+
+- Added support for Laravel 5.7.
+
 ## v2.0.0 (2018-06-17)
 
 - Split code into parser and renderer.

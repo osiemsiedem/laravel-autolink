@@ -1,5 +1,6 @@
 {
     "name": "osiemsiedem/laravel-autolink",
+    "description": "A Laravel package for converting URLs in a given string of text into clickable links.",
     "keywords": ["laravel", "autolink", "html", "email", "url", "www"],
     "license": "MIT",
     "authors": [

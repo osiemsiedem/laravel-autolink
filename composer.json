@@ -6,7 +6,8 @@
     "authors": [
         {
             "name": "Marek Szymczuk",
-            "email": "marek@osiemsiedem.com"
+            "email": "marek@osiemsiedem.com",
+            "homepage": "http://osiemsiedem.com"
         }
     ],
     "require": {

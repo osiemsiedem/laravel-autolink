@@ -1,5 +1,9 @@
 # Release Notes
 
+## v2.0.2 (2019-04-09)
+
+- Added support for Laravel 5.8.
+
 ## v2.0.1 (2018-09-04)
 
 - Added support for Laravel 5.7.

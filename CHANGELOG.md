@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.0.1 (2019-09-03)
+
+- Updated PHP version constraint.
+
 ## v3.0.0 (2019-09-03)
 
 - Added support for Laravel 6.0.

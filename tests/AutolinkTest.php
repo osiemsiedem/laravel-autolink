@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink;
 
+use Illuminate\Support\Str;
 use OsiemSiedem\Autolink\Parser;
 use OsiemSiedem\Autolink\Autolink;
 use OsiemSiedem\Autolink\HtmlRenderer;
@@ -44,7 +45,7 @@ final class AutolinkTest extends TestCase
             $href = $title;
         }
 
-        if ( ! starts_with($href, ['http', 'https', 'mailto'])) {
+        if ( ! Str::startsWith($href, ['http', 'https', 'mailto'])) {
             $href = 'http://'.$href;
         }
 

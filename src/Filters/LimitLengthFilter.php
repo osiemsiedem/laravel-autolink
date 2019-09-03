@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Filters;
 
+use Illuminate\Support\Str;
 use OsiemSiedem\Autolink\Contracts\Filter;
 use OsiemSiedem\Autolink\Contracts\Element;
 
@@ -42,7 +43,7 @@ class LimitLengthFilter implements Filter
     {
         $title = $element->getTitle();
 
-        $title = str_limit($title, $this->limit, $this->end);
+        $title = Str::limit($title, $this->limit, $this->end);
 
         $element->setTitle($title);
 

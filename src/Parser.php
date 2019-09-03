@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink;
 
+use Illuminate\Support\Arr;
 use OsiemSiedem\Autolink\Contracts\Parser as ElementParser;
 
 class Parser
@@ -97,7 +98,7 @@ class Parser
                 continue;
             }
 
-            $parsers = array_get($this->elementParsers, $character);
+            $parsers = Arr::get($this->elementParsers, $character);
 
             if (is_null($parsers)) {
                 continue;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink;
 
 use Iterator;
+use Illuminate\Support\Arr;
 
 class Cursor implements Iterator
 {
@@ -127,7 +128,7 @@ class Cursor implements Iterator
      */
     public function setState(array $state): void
     {
-        $this->position = array_get($state, 'position', 0);
+        $this->position = Arr::get($state, 'position', 0);
     }
 
     /**

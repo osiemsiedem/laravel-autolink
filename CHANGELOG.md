@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.0.0 (2019-09-03)
+
+- Added support for Laravel 6.0.
+
 ## v2.0.2 (2019-04-09)
 
 - Added support for Laravel 5.8.

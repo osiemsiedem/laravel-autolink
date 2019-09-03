@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Parsers;
 
+use Illuminate\Support\Arr;
 use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Contracts\Parser;
 
@@ -139,7 +140,7 @@ abstract class AbstractParser implements Parser
      */
     protected function getMatchingParenthesis(string $parenthesis): ?string
     {
-        return array_get([
+        return Arr::get([
             '"' => '"',
             "'" => "'",
             ')' => '(',

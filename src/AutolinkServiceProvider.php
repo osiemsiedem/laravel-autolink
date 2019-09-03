@@ -5,16 +5,10 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
-class AutolinkServiceProvider extends ServiceProvider
+class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * Perform post-registration booting of services.
      *

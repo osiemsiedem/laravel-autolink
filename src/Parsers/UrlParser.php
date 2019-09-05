@@ -45,7 +45,7 @@ class UrlParser extends AbstractUrlParser
             return null;
         }
 
-        if ( ! $this->validateDomain($cursor, $start + 3, $this->allowShort)) {
+        if (! $this->validateDomain($cursor, $start + 3, $this->allowShort)) {
             return null;
         }
 
@@ -71,7 +71,7 @@ class UrlParser extends AbstractUrlParser
             break;
         }
 
-        if ( ! $this->validateProtocol($cursor, $start)) {
+        if (! $this->validateProtocol($cursor, $start)) {
             return null;
         }
 

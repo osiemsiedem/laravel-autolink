@@ -18,7 +18,7 @@ abstract class AbstractUrlParser extends AbstractParser
      */
     protected function validateDomain(Cursor $cursor, int $start, bool $allowShort = true): bool
     {
-        if ( ! ctype_alnum($cursor->getCharacter($start))) {
+        if (! ctype_alnum($cursor->getCharacter($start))) {
             return false;
         }
 
@@ -29,7 +29,7 @@ abstract class AbstractUrlParser extends AbstractParser
 
             if ($character === '.') {
                 $dot++;
-            } elseif ( ! ctype_alnum($character) && $character !== '-') {
+            } elseif (! ctype_alnum($character) && $character !== '-') {
                 break;
             }
         }

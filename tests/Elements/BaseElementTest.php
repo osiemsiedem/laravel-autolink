@@ -9,7 +9,7 @@ use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Contracts\Element;
 use OsiemSiedem\Autolink\Elements\BaseElement;
 
-final class LimitLengthFilterTest extends TestCase
+final class BaseElementTest extends TestCase
 {
     public function testInstanceOf(): void
     {

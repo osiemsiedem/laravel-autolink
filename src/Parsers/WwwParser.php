@@ -43,13 +43,13 @@ class WwwParser extends AbstractUrlParser
             return null;
         }
 
-        if ( ! $this->validateDomain($cursor, $start, $this->allowShort)) {
+        if (! $this->validateDomain($cursor, $start, $this->allowShort)) {
             return null;
         }
 
         $boundary = $cursor->getCharacter($start - 1);
 
-        if ( ! is_null($boundary) && ! ctype_space($boundary) && ! ctype_punct($boundary)) {
+        if (! is_null($boundary) && ! ctype_space($boundary) && ! ctype_punct($boundary)) {
             return null;
         }
 

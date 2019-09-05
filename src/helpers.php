@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\HtmlString;
 use OsiemSiedem\Autolink\Facades\Autolink;
 
-if ( ! function_exists('autolink')) {
+if (! function_exists('autolink')) {
     /**
      * Convert URLs in the string into clickable links.
      *

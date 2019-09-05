@@ -45,7 +45,7 @@ final class AutolinkTest extends TestCase
             $href = $title;
         }
 
-        if ( ! Str::startsWith($href, ['http', 'https', 'mailto'])) {
+        if (! Str::startsWith($href, ['http', 'https', 'mailto'])) {
             $href = 'http://'.$href;
         }
 

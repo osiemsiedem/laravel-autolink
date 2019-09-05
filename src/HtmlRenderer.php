@@ -46,7 +46,7 @@ class HtmlRenderer
                 $elements[$i] = $filter->filter($elements[$i]);
             }
 
-            if ( ! is_null($callback)) {
+            if (! is_null($callback)) {
                 $elements[$i] = $callback($elements[$i]);
             }
 

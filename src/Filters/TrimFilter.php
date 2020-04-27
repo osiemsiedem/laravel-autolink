@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Filters;
 
-use OsiemSiedem\Autolink\Contracts\Filter;
 use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Contracts\Filter;
 use OsiemSiedem\Autolink\Elements\EmailElement;
 
 class TrimFilter implements Filter

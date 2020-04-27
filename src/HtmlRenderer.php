@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink;
 
-use Spatie\Html\Elements\A;
 use Illuminate\Support\HtmlString;
 use OsiemSiedem\Autolink\Contracts\Filter;
+use Spatie\Html\Elements\A;
 
 class HtmlRenderer
 {

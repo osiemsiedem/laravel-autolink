@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink\Filters;
 
-use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Facades\Autolink;
+use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class AutolinkTest extends TestCase
 {

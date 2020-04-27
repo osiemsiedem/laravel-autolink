@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink\Parsers;
 
 use Illuminate\Support\Str;
-use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Elements\UrlElement;
 
 class UrlParser extends AbstractUrlParser

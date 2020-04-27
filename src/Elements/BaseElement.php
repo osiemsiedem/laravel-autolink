@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Elements;
 
-use Spatie\Html\Attributes;
 use OsiemSiedem\Autolink\Contracts\Element;
+use Spatie\Html\Attributes;
 
 class BaseElement implements Element
 {

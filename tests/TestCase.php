@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OsiemSiedem\Tests\Autolink;
 
 use Illuminate\Support\Facades\Facade;
-use PHPUnit\Framework\TestCase as BaseTestCase;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink;
 
-use Iterator;
 use Illuminate\Support\Arr;
+use Iterator;
 
 class Cursor implements Iterator
 {

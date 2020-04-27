@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink\Filters;
 
-use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Contracts\Filter;
-use OsiemSiedem\Autolink\Filters\TrimFilter;
 use OsiemSiedem\Autolink\Elements\BaseElement;
 use OsiemSiedem\Autolink\Elements\EmailElement;
+use OsiemSiedem\Autolink\Filters\TrimFilter;
+use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class TrimFilterTest extends TestCase
 {

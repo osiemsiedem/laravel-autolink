@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace OsiemSiedem\Tests\Autolink;
 
 use Illuminate\Support\Str;
-use OsiemSiedem\Autolink\Parser;
 use OsiemSiedem\Autolink\Autolink;
-use OsiemSiedem\Autolink\HtmlRenderer;
 use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\HtmlRenderer;
+use OsiemSiedem\Autolink\Parser;
+use OsiemSiedem\Autolink\Parsers\EmailParser;
 use OsiemSiedem\Autolink\Parsers\UrlParser;
 use OsiemSiedem\Autolink\Parsers\WwwParser;
-use OsiemSiedem\Autolink\Parsers\EmailParser;
 
 final class AutolinkTest extends TestCase
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink\Parsers;
 
-use OsiemSiedem\Autolink\Cursor;
-use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Parsers\WwwParser;
+use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class WwwParserTest extends TestCase
 {

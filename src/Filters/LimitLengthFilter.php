@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink\Filters;
 
 use Illuminate\Support\Str;
-use OsiemSiedem\Autolink\Contracts\Filter;
 use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Contracts\Filter;
 
 class LimitLengthFilter implements Filter
 {

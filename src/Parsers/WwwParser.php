@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink\Parsers;
 
-use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Contracts\Element;
+use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Elements\UrlElement;
 
 class WwwParser extends AbstractUrlParser

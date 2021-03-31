@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "illuminate/support": "^8.0",
         "symfony/polyfill-mbstring": "^1.0",
         "spatie/laravel-html": "^2.27"

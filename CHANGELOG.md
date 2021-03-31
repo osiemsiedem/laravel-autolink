@@ -1,5 +1,9 @@
 # Release Notes
 
+## v5.1.0 (2021-03-31)
+
+- Added support for PHP 8.0.
+
 ## v5.0.0 (2020-09-09)
 
 - Added support for Laravel 8.0.

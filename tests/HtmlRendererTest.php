@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink;
 
-use OsiemSiedem\Autolink\HtmlRenderer;
 use OsiemSiedem\Autolink\Elements\BaseElement;
 use OsiemSiedem\Autolink\Filters\LimitLengthFilter;
+use OsiemSiedem\Autolink\HtmlRenderer;
 
 final class HtmlRendererTest extends TestCase
 {

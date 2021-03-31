@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Tests\Autolink\Elements;
 
-use Spatie\Html\Attributes;
-use OsiemSiedem\Tests\Autolink\TestCase;
 use OsiemSiedem\Autolink\Contracts\Element;
 use OsiemSiedem\Autolink\Elements\BaseElement;
+use OsiemSiedem\Tests\Autolink\TestCase;
+use Spatie\Html\Attributes;
 
 final class BaseElementTest extends TestCase
 {

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink\Parsers;
 
 use Illuminate\Support\Arr;
-use OsiemSiedem\Autolink\Cursor;
 use OsiemSiedem\Autolink\Contracts\Parser;
+use OsiemSiedem\Autolink\Cursor;
 
 abstract class AbstractParser implements Parser
 {

@@ -1,5 +1,13 @@
 # Release Notes
 
+## v5.0.0 (2020-09-09)
+
+- Added support for Laravel 8.0.
+
+## v4.0.0 (2020-04-28)
+
+- Added support for Laravel 7.0.
+
 ## v3.0.2 (2019-09-03)
 
 - Implement DeferrableProvider contract.

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace OsiemSiedem\Autolink;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
 
 class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvider
 {

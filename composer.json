@@ -11,14 +11,14 @@
         }
     ],
     "require": {
-        "php": "^7.2",
-        "illuminate/support": "^6.0 || ^7.0",
+        "php": "^7.3",
+        "illuminate/support": "^7.0 || ^8.0",
         "symfony/polyfill-mbstring": "^1.0",
-        "spatie/laravel-html": "^2.23"
+        "spatie/laravel-html": "^2.27"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.1"
+        "phpunit/phpunit": "^9.3",
+        "mockery/mockery": "^1.3.1"
     },
     "autoload": {
         "psr-4" : {

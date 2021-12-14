@@ -38,7 +38,7 @@ abstract class AbstractParser implements Parser
             } elseif ($character === ';') {
                 $newEnd = $end - 2;
 
-                while ($newEnd > 0 && ctype_alnum($cursor->getCharacter($newEnd))) {
+                while ($newEnd > 0 && ctype_alnum((string) $cursor->getCharacter($newEnd))) {
                     $newEnd--;
                 }
 

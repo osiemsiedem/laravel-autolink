@@ -18,14 +18,14 @@ abstract class AbstractUrlParser extends AbstractParser
      */
     protected function validateDomain(Cursor $cursor, int $start, bool $allowShort = true): bool
     {
-        if (! ctype_alnum($cursor->getCharacter($start))) {
+        if (! ctype_alnum((string) $cursor->getCharacter($start))) {
             return false;
         }
 
         $dot = 0;
 
         for ($i = $start + 3, $j = $cursor->getLength() - 1; $i < $j; $i++) {
-            $character = $cursor->getCharacter($i);
+            $character = (string) $cursor->getCharacter($i);
 
             if ($character === '.') {
                 $dot++;

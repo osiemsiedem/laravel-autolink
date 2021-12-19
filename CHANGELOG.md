@@ -1,5 +1,9 @@
 # Release Notes
 
+## v5.2.0 (2021-12-19)
+
+- Added support for PHP 8.1.
+
 ## v5.1.0 (2021-03-31)
 
 - Added support for PHP 8.0.

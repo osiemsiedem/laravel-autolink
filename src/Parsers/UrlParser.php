@@ -62,7 +62,7 @@ class UrlParser extends AbstractUrlParser
         $end = $cursor->getPosition();
 
         while ($start > 0) {
-            if (ctype_alpha($cursor->getCharacter($start - 1))) {
+            if (ctype_alpha((string) $cursor->getCharacter($start - 1))) {
                 $start--;
 
                 continue;

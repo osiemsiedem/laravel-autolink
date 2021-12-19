@@ -38,7 +38,7 @@ class EmailParser extends AbstractParser
         $cursor->prev();
 
         while ($cursor->valid()) {
-            $character = $cursor->getCharacter();
+            $character = (string) $cursor->getCharacter();
 
             if (ctype_alnum($character) || strpos('.+-_%', $character) !== false) {
                 $start = $cursor->getPosition();
@@ -65,7 +65,7 @@ class EmailParser extends AbstractParser
         $at = $dot = 0;
 
         while ($cursor->valid()) {
-            $character = $cursor->getCharacter();
+            $character = (string) $cursor->getCharacter();
 
             if (ctype_alnum($character)) {
                 $cursor->next();

@@ -6,8 +6,8 @@ A Laravel package for converting URLs in a given string of text into clickable l
 
 ## Requirements
 
-- PHP >= 7.3
-- Laravel >= 8.0
+- PHP >= 8.0
+- Laravel >= 9.0
 
 ## Installation
 

@@ -1,5 +1,9 @@
 # Release Notes
 
+## v6.0.0 (2022-02-09)
+
+- Added support for Laravel 9.0.
+
 ## v5.2.0 (2021-12-19)
 
 - Added support for PHP 8.1.

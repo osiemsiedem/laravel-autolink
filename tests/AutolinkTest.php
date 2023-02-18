@@ -17,7 +17,7 @@ final class AutolinkTest extends TestCase
 {
     private $autolink;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $parser = new Parser;
         $parser->addElementParser(new UrlParser);
@@ -29,7 +29,7 @@ final class AutolinkTest extends TestCase
         $this->autolink = new Autolink($parser, $renderer);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         $this->autolink = null;
     }

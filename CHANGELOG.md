@@ -1,5 +1,9 @@
 # Release Notes
 
+## v7.0.0 (2023-02-19)
+
+- Added support for Laravel 10.0.
+
 ## v6.0.0 (2022-02-09)
 
 - Added support for Laravel 9.0.

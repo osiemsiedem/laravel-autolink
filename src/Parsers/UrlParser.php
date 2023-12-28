@@ -39,6 +39,8 @@ class UrlParser extends AbstractUrlParser
      */
     public function parse(Cursor $cursor): ?Element
     {
+        $state = $cursor->getState();
+
         $start = $cursor->getPosition();
 
         if ($cursor->getText($start, 3) !== '://') {
@@ -76,6 +78,9 @@ class UrlParser extends AbstractUrlParser
         }
 
         $position = $this->trimMoreDelimeters($cursor, $start, $end);
+
+        $state['position'] = $position['end'];
+        $cursor->setState($state);
 
         $url = $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
 

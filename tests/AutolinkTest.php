@@ -97,6 +97,14 @@ final class AutolinkTest extends TestCase
         $this->assertEquals("{link: {$link3}}", $this->autolink->convert("{link: {$url3}}"));
     }
 
+    public function testAutolinkWithMultipleLinks(): void
+    {
+        $url = 'http://example.com<br>http://example.com<br>http://example.com';
+        $link = $this->generateLink($url);
+
+        $this->assertEquals('<a href="http://example.com">http://example.com</a><br><a href="http://example.com">http://example.com</a><br><a href="http://example.com">http://example.com</a>', $this->autolink->convert($url));
+    }
+
     public function testAutolinkWithMultipleTrailingPunctuations(): void
     {
         $url = 'http://example.com';

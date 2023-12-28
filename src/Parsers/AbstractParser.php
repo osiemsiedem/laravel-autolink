@@ -97,7 +97,7 @@ abstract class AbstractParser implements Parser
 
         return [
             'start' => $start,
-            'end'   => $end,
+            'end' => $end,
         ];
     }
 
@@ -128,7 +128,7 @@ abstract class AbstractParser implements Parser
 
         return [
             'start' => $start,
-            'end'   => $end,
+            'end' => $end,
         ];
     }
 

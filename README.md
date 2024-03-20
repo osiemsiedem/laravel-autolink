@@ -1,13 +1,13 @@
 # Autolink for Laravel
 
-[![Build Status](https://travis-ci.org/osiemsiedem/laravel-autolink.svg?branch=master)](https://travis-ci.org/osiemsiedem/laravel-autolink) [![codecov](https://codecov.io/gh/osiemsiedem/laravel-autolink/branch/master/graph/badge.svg)](https://codecov.io/gh/osiemsiedem/laravel-autolink) [![Latest Stable Version](https://poser.pugx.org/osiemsiedem/laravel-autolink/v/stable)](https://packagist.org/packages/osiemsiedem/laravel-autolink) [![License](https://poser.pugx.org/osiemsiedem/laravel-autolink/license)](https://packagist.org/packages/osiemsiedem/laravel-autolink)
+[![Latest Stable Version](https://poser.pugx.org/osiemsiedem/laravel-autolink/v/stable)](https://packagist.org/packages/osiemsiedem/laravel-autolink) [![License](https://poser.pugx.org/osiemsiedem/laravel-autolink/license)](https://packagist.org/packages/osiemsiedem/laravel-autolink)
 
 A Laravel package for converting URLs in a given string of text into clickable links.
 
 ## Requirements
 
-- PHP >= 8.1
-- Laravel >= 10.0
+- PHP >= 8.2
+- Laravel >= 11.0
 
 ## Installation
 

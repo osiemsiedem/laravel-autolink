@@ -1,5 +1,9 @@
 # Release Notes
 
+## v8.0.0 (2024-03-20)
+
+- Added support for Laravel 11.0.
+
 ## v7.1.0 (2023-12-28)
 
 - Fixed cursor state after parsing a text with multiple URLs.

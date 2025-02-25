@@ -11,7 +11,7 @@ use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class LimitLengthFilterTest extends TestCase
 {
-    public function testFilter(): void
+    public function test_filter(): void
     {
         $element = new BaseElement('http://example.com/some/very/long/link?foo=bar', 'http://example.com/some/very/long/link?foo=bar', 0, 0);
 

@@ -9,7 +9,7 @@ use OsiemSiedem\Autolink\Parsers\UrlParser;
 
 final class ParserTest extends TestCase
 {
-    public function testIgnoredTags(): void
+    public function test_ignored_tags(): void
     {
         $parser = new Parser;
         $parser->addElementParser(new UrlParser);
@@ -22,7 +22,7 @@ final class ParserTest extends TestCase
         $this->assertCount(0, $parser->parse('<b>http://example.com</b>'));
     }
 
-    public function testEof(): void
+    public function test_eof(): void
     {
         $parser = new Parser;
         $parser->setIgnoredTags(['a']);

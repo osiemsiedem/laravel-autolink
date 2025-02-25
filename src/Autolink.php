@@ -8,22 +8,12 @@ use Illuminate\Support\HtmlString;
 
 class Autolink
 {
-    /**
-     * @var \OsiemSiedem\Autolink\Parser
-     */
-    protected $parser;
+    protected Parser $parser;
 
-    /**
-     * @var \OsiemSiedem\Autolink\HtmlRenderer
-     */
-    protected $renderer;
+    protected HtmlRenderer $renderer;
 
     /**
      * Create a new instance.
-     *
-     * @param  \OsiemSiedem\Autolink\Parser  $parser
-     * @param  \OsiemSiedem\Autolink\HtmlRenderer  $renderer
-     * @return void
      */
     public function __construct(Parser $parser, HtmlRenderer $renderer)
     {
@@ -33,12 +23,8 @@ class Autolink
 
     /**
      * Convert the URLs into clickable links.
-     *
-     * @param  string  $text
-     * @param  callable|null  $callback
-     * @return \Illuminate\Support\HtmlString
      */
-    public function convert(string $text, callable $callback = null): HtmlString
+    public function convert(string $text, ?callable $callback = null): HtmlString
     {
         $elements = $this->parse($text);
 
@@ -48,8 +34,7 @@ class Autolink
     /**
      * Parse the text.
      *
-     * @param  string  $text
-     * @return array
+     * @return \OsiemSiedem\Autolink\Contracts\Element[]
      */
     public function parse(string $text): array
     {
@@ -58,13 +43,8 @@ class Autolink
 
     /**
      * Render the elements.
-     *
-     * @param  string  $text
-     * @param  array  $elements
-     * @param  callable|null  $callback
-     * @return \Illuminate\Support\HtmlString
      */
-    public function render(string $text, array $elements, callable $callback = null): HtmlString
+    public function render(string $text, array $elements, ?callable $callback = null): HtmlString
     {
         return $this->renderer->render($text, $elements, $callback);
     }

@@ -10,20 +10,17 @@ use OsiemSiedem\Autolink\Contracts\Parser as ElementParser;
 class Parser
 {
     /**
-     * @var array
+     * @var string[]
      */
-    protected $ignoredTags = ['a', 'pre', 'code', 'kbd', 'script'];
+    protected array $ignoredTags = ['a', 'pre', 'code', 'kbd', 'script'];
 
     /**
-     * @var array
+     * @var array<string, \OsiemSiedem\Autolink\Contracts\Parser[]>
      */
-    protected $elementParsers = [];
+    protected array $elementParsers = [];
 
     /**
      * Add a new parser.
-     *
-     * @param  \OsiemSiedem\Autolink\Contracts\Parser  $parser
-     * @return $this
      */
     public function addElementParser(ElementParser $parser): self
     {
@@ -37,8 +34,7 @@ class Parser
     /**
      * Set the ignored tags.
      *
-     * @param  array  $ignored
-     * @return $this
+     * @param  string[]  $ignored
      */
     public function setIgnoredTags(array $ignored): self
     {
@@ -50,8 +46,7 @@ class Parser
     /**
      * Parse the text.
      *
-     * @param  string  $text
-     * @return array
+     * @return \OsiemSiedem\Autolink\Contracts\Element[]
      */
     public function parse(string $text): array
     {
@@ -98,6 +93,7 @@ class Parser
                 continue;
             }
 
+            /** @var \OsiemSiedem\Autolink\Contracts\Parser[]|null $parsers */
             $parsers = Arr::get($this->elementParsers, $character);
 
             if (is_null($parsers)) {

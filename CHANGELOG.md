@@ -1,5 +1,9 @@
 # Release Notes
 
+## v9.0.0 (2025-02-25)
+
+- Added support for Laravel 12.0.
+
 ## v8.0.0 (2024-03-20)
 
 - Added support for Laravel 11.0.

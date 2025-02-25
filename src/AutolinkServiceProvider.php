@@ -11,10 +11,8 @@ class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvi
 {
     /**
      * Perform post-registration booting of services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/autolink.php', 'autolink'
@@ -26,11 +24,9 @@ class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvi
     }
 
     /**
-     * Register the service provider.
-     *
-     * @return void
+     * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton('osiemsiedem.autolink.parser', function ($app) {
             $config = $app['config']->get('autolink');
@@ -62,9 +58,7 @@ class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvi
     }
 
     /**
-     * Get the services provided by the provider.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function provides()
     {

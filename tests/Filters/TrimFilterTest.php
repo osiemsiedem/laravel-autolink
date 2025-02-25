@@ -12,7 +12,7 @@ use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class TrimFilterTest extends TestCase
 {
-    public function testFilter(): void
+    public function test_filter(): void
     {
         $element = new BaseElement('http://www.example.com/', 'http://www.example.com/', 0, 0);
 
@@ -29,7 +29,7 @@ final class TrimFilterTest extends TestCase
         $this->assertEquals('http://www.example.com/', $element->getUrl());
     }
 
-    public function testIgnoreEmailElement(): void
+    public function test_ignore_email_element(): void
     {
         $element = new EmailElement('www.test@example.com', 'mailto:www.test@example.com', 0, 0);
 

@@ -9,37 +9,21 @@ use Iterator;
 
 class Cursor implements Iterator
 {
-    /**
-     * @var string
-     */
-    protected $text;
+    protected string $text;
+
+    protected string $encoding;
+
+    protected int $length = 0;
+
+    protected int $position = 0;
 
     /**
-     * @var string
+     * @var string[]
      */
-    protected $encoding;
-
-    /**
-     * @var int
-     */
-    protected $length = 0;
-
-    /**
-     * @var int
-     */
-    protected $position = 0;
-
-    /**
-     * @var array
-     */
-    protected $cache = [];
+    protected array $cache = [];
 
     /**
      * Create a new instance.
-     *
-     * @param  string  $text
-     * @param  string  $encoding
-     * @return void
      */
     public function __construct(string $text, string $encoding = 'UTF-8')
     {
@@ -50,8 +34,6 @@ class Cursor implements Iterator
 
     /**
      * Get the current character.
-     *
-     * @return string|null
      */
     public function current(): ?string
     {
@@ -60,8 +42,6 @@ class Cursor implements Iterator
 
     /**
      * Get the key of the current element.
-     *
-     * @return int
      */
     public function key(): int
     {
@@ -70,9 +50,6 @@ class Cursor implements Iterator
 
     /**
      * Move forward to the next character.
-     *
-     * @param  int  $offset
-     * @return void
      */
     public function next(int $offset = 1): void
     {
@@ -81,9 +58,6 @@ class Cursor implements Iterator
 
     /**
      * Move backward to the previous character.
-     *
-     * @param  int  $offset
-     * @return void
      */
     public function prev(int $offset = 1): void
     {
@@ -92,8 +66,6 @@ class Cursor implements Iterator
 
     /**
      * Rewind to the first character.
-     *
-     * @return void
      */
     public function rewind(): void
     {
@@ -102,8 +74,6 @@ class Cursor implements Iterator
 
     /**
      * Check if the current position is valid.
-     *
-     * @return bool
      */
     public function valid(): bool
     {
@@ -112,8 +82,6 @@ class Cursor implements Iterator
 
     /**
      * Get the state.
-     *
-     * @return array
      */
     public function getState(): array
     {
@@ -122,9 +90,6 @@ class Cursor implements Iterator
 
     /**
      * Save the state.
-     *
-     * @param  array  $state
-     * @return void
      */
     public function setState(array $state): void
     {
@@ -133,9 +98,6 @@ class Cursor implements Iterator
 
     /**
      * Check if the given pattern is matched.
-     *
-     * @param  string  $pattern
-     * @return bool
      */
     public function match(string $pattern): bool
     {
@@ -146,11 +108,8 @@ class Cursor implements Iterator
 
     /**
      * Get the character.
-     *
-     * @param  int|null  $position
-     * @return string|null
      */
-    public function getCharacter(int $position = null): ?string
+    public function getCharacter(?int $position = null): ?string
     {
         if ($position === null) {
             $position = $this->getPosition();
@@ -169,10 +128,6 @@ class Cursor implements Iterator
 
     /**
      * Get the text.
-     *
-     * @param  int|null  $start
-     * @param  int|null  $length
-     * @return string
      */
     public function getText(?int $start = null, ?int $length = null): string
     {
@@ -185,8 +140,6 @@ class Cursor implements Iterator
 
     /**
      * Get the encoding.
-     *
-     * @return string
      */
     public function getEncoding(): string
     {
@@ -195,8 +148,6 @@ class Cursor implements Iterator
 
     /**
      * Get the length.
-     *
-     * @return int
      */
     public function getLength(): int
     {
@@ -205,8 +156,6 @@ class Cursor implements Iterator
 
     /**
      * Get the position.
-     *
-     * @return int
      */
     public function getPosition(): int
     {

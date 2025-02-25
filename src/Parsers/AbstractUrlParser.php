@@ -10,11 +10,6 @@ abstract class AbstractUrlParser extends AbstractParser
 {
     /**
      * Validate the domain name.
-     *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @param  int  $start
-     * @param  bool  $allowShort
-     * @return bool
      */
     protected function validateDomain(Cursor $cursor, int $start, bool $allowShort = true): bool
     {
@@ -39,9 +34,6 @@ abstract class AbstractUrlParser extends AbstractParser
 
     /**
      * Check for whitespace character.
-     *
-     * @param  string  $character
-     * @return bool
      */
     protected function isWhitespace(string $character): bool
     {

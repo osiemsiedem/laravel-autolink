@@ -10,7 +10,7 @@ use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class UrlParserTest extends TestCase
 {
-    public function testParse(): void
+    public function test_parse(): void
     {
         $cursor = new Cursor('http://');
 
@@ -21,7 +21,7 @@ final class UrlParserTest extends TestCase
         $this->assertNull($parser->parse($cursor));
     }
 
-    public function testDomainName(): void
+    public function test_domain_name(): void
     {
         $cursor = new Cursor('http://@');
 
@@ -32,7 +32,7 @@ final class UrlParserTest extends TestCase
         $this->assertNull($parser->parse($cursor));
     }
 
-    public function testInvalidProtocol(): void
+    public function test_invalid_protocol(): void
     {
         $cursor = new Cursor('xyz://example.com');
 

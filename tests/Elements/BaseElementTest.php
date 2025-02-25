@@ -11,14 +11,14 @@ use Spatie\Html\Attributes;
 
 final class BaseElementTest extends TestCase
 {
-    public function testInstanceOf(): void
+    public function test_instance_of(): void
     {
         $element = new BaseElement('http://example.com/', 'http://example.com/', 0, 0);
 
         $this->assertInstanceOf(Element::class, $element);
     }
 
-    public function testTitle(): void
+    public function test_title(): void
     {
         $element = new BaseElement('example.com', 'http://example.com', 0, 0);
 
@@ -29,7 +29,7 @@ final class BaseElementTest extends TestCase
         $this->assertEquals('example', $element->getTitle());
     }
 
-    public function testUrl(): void
+    public function test_url(): void
     {
         $element = new BaseElement('example.com', 'http://example.com', 0, 0);
 
@@ -40,7 +40,7 @@ final class BaseElementTest extends TestCase
         $this->assertEquals('https://example.com', $element->getUrl());
     }
 
-    public function testAttributes(): void
+    public function test_attributes(): void
     {
         $element = new BaseElement('example.com', 'http://example.com', 0, 0, ['class' => 'foo bar']);
 
@@ -49,7 +49,7 @@ final class BaseElementTest extends TestCase
         $this->assertInstanceOf(Attributes::class, $attributes);
     }
 
-    public function testPosition(): void
+    public function test_position(): void
     {
         $element = new BaseElement('example.com', 'http://example.com', 12, 54);
 

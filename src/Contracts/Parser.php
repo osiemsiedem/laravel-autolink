@@ -10,16 +10,11 @@ interface Parser
 {
     /**
      * Get the characters.
-     *
-     * @return array
      */
     public function getCharacters(): array;
 
     /**
      * Parse the text.
-     *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
     public function parse(Cursor $cursor): ?Element;
 }

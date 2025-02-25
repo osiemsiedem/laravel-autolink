@@ -1,7 +1,0 @@
-preset: laravel
-
-finder:
-  path:
-    - "config"
-    - "src"
-    - "tests"

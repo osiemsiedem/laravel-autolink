@@ -10,15 +10,12 @@ use OsiemSiedem\Autolink\Elements\UrlElement;
 
 class WwwParser extends AbstractUrlParser
 {
-    /**
-     * @var bool
-     */
-    protected $allowShort = false;
+    protected bool $allowShort = false;
 
     /**
      * Get the characters.
      *
-     * @return array
+     * @return array<string>
      */
     public function getCharacters(): array
     {
@@ -27,9 +24,6 @@ class WwwParser extends AbstractUrlParser
 
     /**
      * Parse the text.
-     *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
     public function parse(Cursor $cursor): ?Element
     {

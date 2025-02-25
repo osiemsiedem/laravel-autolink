@@ -9,7 +9,7 @@ use OsiemSiedem\Tests\Autolink\TestCase;
 
 final class AutolinkTest extends TestCase
 {
-    public function testFacade(): void
+    public function test_facade(): void
     {
         Autolink::shouldReceive('convert')
             ->once()

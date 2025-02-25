@@ -13,10 +13,7 @@ abstract class AbstractParser implements Parser
     /**
      * Trim the delimeters.
      *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @param  int  $start
-     * @param  int  $end
-     * @return array|null
+     * @return array{start: int, end: int}|null
      */
     protected function trimDelimeters(Cursor $cursor, int $start, int $end): ?array
     {
@@ -104,10 +101,7 @@ abstract class AbstractParser implements Parser
     /**
      * Trim the delimeters.
      *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @param  int  $start
-     * @param  int  $end
-     * @return array|null
+     * @return array{start: int, end: int}|null
      */
     protected function trimMoreDelimeters(Cursor $cursor, int $start, int $end): ?array
     {
@@ -134,9 +128,6 @@ abstract class AbstractParser implements Parser
 
     /**
      * Get the matching parenthesis.
-     *
-     * @param  string  $parenthesis
-     * @return string|null
      */
     protected function getMatchingParenthesis(string $parenthesis): ?string
     {

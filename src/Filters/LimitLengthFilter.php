@@ -10,22 +10,12 @@ use OsiemSiedem\Autolink\Contracts\Filter;
 
 class LimitLengthFilter implements Filter
 {
-    /**
-     * @var int
-     */
-    protected $limit;
+    protected int $limit;
 
-    /**
-     * @var string
-     */
-    protected $end;
+    protected string $end;
 
     /**
      * Create a new instance.
-     *
-     * @param  int  $limit
-     * @param  string  $end
-     * @return void
      */
     public function __construct(int $limit = 30, string $end = '...')
     {
@@ -34,10 +24,7 @@ class LimitLengthFilter implements Filter
     }
 
     /**
-     * Filter the element.
-     *
-     * @param  \OsiemSiedem\Autolink\Contracts\Element  $element
-     * @return \OsiemSiedem\Autolink\Contracts\Element
+     * {@inheritdoc}
      */
     public function filter(Element $element): Element
     {

@@ -10,7 +10,7 @@ use OsiemSiedem\Autolink\HtmlRenderer;
 
 final class HtmlRendererTest extends TestCase
 {
-    public function testRender(): void
+    public function test_render(): void
     {
         $element = new BaseElement('http://example.com/some/very/long/link?foo=bar', 'http://example.com/some/very/long/link?foo=bar', 0, 46, ['class' => 'autolink']);
 
@@ -21,7 +21,7 @@ final class HtmlRendererTest extends TestCase
         $this->assertEquals('<a class="autolink" href="http://example.com/some/very/long/link?foo=bar">http://example.com/some/very/long/link?foo=bar</a>', $html);
     }
 
-    public function testAddFilter(): void
+    public function test_add_filter(): void
     {
         $element = new BaseElement('http://example.com/', 'http://example.com/', 0, 19);
 

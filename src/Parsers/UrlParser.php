@@ -11,20 +11,17 @@ use OsiemSiedem\Autolink\Elements\UrlElement;
 
 class UrlParser extends AbstractUrlParser
 {
-    /**
-     * @var bool
-     */
-    protected $allowShort = true;
+    protected bool $allowShort = true;
 
     /**
-     * @var array
+     * @var array<string>
      */
-    protected $protocols = ['http://', 'https://'];
+    protected array $protocols = ['http://', 'https://'];
 
     /**
      * Get the characters.
      *
-     * @return array
+     * @return array<string>
      */
     public function getCharacters(): array
     {
@@ -33,9 +30,6 @@ class UrlParser extends AbstractUrlParser
 
     /**
      * Parse the text.
-     *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
     public function parse(Cursor $cursor): ?Element
     {
@@ -89,10 +83,6 @@ class UrlParser extends AbstractUrlParser
 
     /**
      * Validate the protocol.
-     *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @param  int  $start
-     * @return bool
      */
     protected function validateProtocol(Cursor $cursor, int $start): bool
     {

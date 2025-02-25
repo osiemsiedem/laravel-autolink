@@ -13,7 +13,7 @@ class EmailParser extends AbstractParser
     /**
      * Get the characters.
      *
-     * @return array
+     * @return array<string>
      */
     public function getCharacters(): array
     {
@@ -22,9 +22,6 @@ class EmailParser extends AbstractParser
 
     /**
      * Parse the text.
-     *
-     * @param  \OsiemSiedem\Autolink\Cursor  $cursor
-     * @return \OsiemSiedem\Autolink\Contracts\Element|null
      */
     public function parse(Cursor $cursor): ?Element
     {

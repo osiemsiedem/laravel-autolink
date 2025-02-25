@@ -8,7 +8,7 @@ use OsiemSiedem\Autolink\Cursor;
 
 final class CursorTest extends TestCase
 {
-    public function testMatch(): void
+    public function test_match(): void
     {
         $cursor = new Cursor('some random text http://example.com lorem ipsum');
 
@@ -23,7 +23,7 @@ final class CursorTest extends TestCase
         $this->assertEquals(17, $cursor->getPosition());
     }
 
-    public function testGettersAndSetters(): void
+    public function test_getters_and_setters(): void
     {
         $cursor = new Cursor('Lorem ipsum dolor sit amet 😅');
 
@@ -50,7 +50,7 @@ final class CursorTest extends TestCase
         $this->assertEquals('m', $cursor->getCharacter());
     }
 
-    public function testIterator(): void
+    public function test_iterator(): void
     {
         $cursor = new Cursor('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 

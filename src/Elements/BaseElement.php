@@ -37,11 +37,6 @@ class BaseElement implements Element
     /**
      * Create a new instance.
      *
-     * @param  string  $title
-     * @param  string  $url
-     * @param  int  $start
-     * @param  int  $end
-     * @param  array  $attributes
      * @return void
      */
     public function __construct(string $title, string $url, int $start, int $end, array $attributes = [])
@@ -55,8 +50,6 @@ class BaseElement implements Element
 
     /**
      * Get the title.
-     *
-     * @return string
      */
     public function getTitle(): string
     {
@@ -66,7 +59,6 @@ class BaseElement implements Element
     /**
      * Set the title.
      *
-     * @param  string  $title
      * @return $this
      */
     public function setTitle(string $title): self
@@ -78,8 +70,6 @@ class BaseElement implements Element
 
     /**
      * Get the url.
-     *
-     * @return string
      */
     public function getUrl(): string
     {
@@ -89,7 +79,6 @@ class BaseElement implements Element
     /**
      * Set the url.
      *
-     * @param  string  $url
      * @return $this
      */
     public function setUrl(string $url): self
@@ -101,8 +90,6 @@ class BaseElement implements Element
 
     /**
      * Get the start position.
-     *
-     * @return int
      */
     public function getStart(): int
     {
@@ -111,8 +98,6 @@ class BaseElement implements Element
 
     /**
      * Get the end position.
-     *
-     * @return int
      */
     public function getEnd(): int
     {
@@ -121,8 +106,6 @@ class BaseElement implements Element
 
     /**
      * Get the attributes.
-     *
-     * @return \Spatie\Html\Attributes
      */
     public function getAttributes(): Attributes
     {

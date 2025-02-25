@@ -10,16 +10,10 @@ use Spatie\Html\Elements\A;
 
 class HtmlRenderer
 {
-    /**
-     * @var array
-     */
-    protected $filters = [];
+    protected array $filters = [];
 
     /**
      * Add a new filter.
-     *
-     * @param  \OsiemSiedem\Autolink\Contracts\Filter  $filter
-     * @return $this
      */
     public function addFilter(Filter $filter): self
     {
@@ -31,12 +25,9 @@ class HtmlRenderer
     /**
      * Render the elements in the given text.
      *
-     * @param  string  $text
-     * @param  array  $elements
-     * @param  callable|null  $callback
-     * @return \Illuminate\Support\HtmlString
+     * @param  \OsiemSiedem\Autolink\Elements\BaseElement[]  $elements
      */
-    public function render(string $text, array $elements, callable $callback = null): HtmlString
+    public function render(string $text, array $elements, ?callable $callback = null): HtmlString
     {
         for ($i = count($elements) - 1; $i >= 0; $i--) {
             $start = $elements[$i]->getStart();

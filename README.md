@@ -2,8 +2,8 @@
 
 <p>
 <a href="https://github.com/osiemsiedem/laravel-autolink/actions"><img src="https://github.com/osiemsiedem/laravel-autolink/workflows/Tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/osiemsiedem/laravel-autolink"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/osiemsiedem/laravel-autolink"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://packagist.org/packages/osiemsiedem/laravel-autolink"><img src="https://img.shields.io/packagist/v/osiemsiedem/laravel-autolink" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/osiemsiedem/laravel-autolink"><img src="https://img.shields.io/packagist/l/osiemsiedem/laravel-autolink" alt="License"></a>
 </p>
 
 A Laravel package for converting URLs in a given string of text into clickable links.

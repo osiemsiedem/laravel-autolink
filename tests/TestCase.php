@@ -13,7 +13,7 @@ abstract class TestCase extends BaseTestCase
     use MockeryPHPUnitIntegration;
 
     /**
-     * Setup the test environment.
+     * {@inheritdoc}
      */
     protected function setUp(): void
     {

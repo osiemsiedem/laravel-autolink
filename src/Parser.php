@@ -60,9 +60,7 @@ class Parser
                 foreach ($this->ignoredTags as $ignoredTag) {
                     $length = strlen($ignoredTag) + 1;
 
-                    $tag = $cursor->getText($cursor->getPosition(), $length);
-
-                    if ($tag === "<{$ignoredTag}") {
+                    if ($this->matchesTag($cursor, $ignoredTag)) {
                         $cursor->next($length);
 
                         while ($cursor->valid()) {
@@ -74,9 +72,7 @@ class Parser
                                 break 2;
                             }
 
-                            $tag = $cursor->getText($cursor->getPosition(), strlen($ignoredTag) + 2);
-
-                            if ($tag === "</{$ignoredTag}") {
+                            if ($this->matchesTag($cursor, $ignoredTag, true)) {
                                 break 2;
                             }
 
@@ -111,5 +107,33 @@ class Parser
         }
 
         return $elements;
+    }
+
+    /**
+     * Check if the current position matches the ignored tag.
+     */
+    protected function matchesTag(Cursor $cursor, string $ignoredTag, bool $closing = false): bool
+    {
+        $position = $cursor->getPosition();
+        $prefix = $closing ? '</' : '<';
+        $length = strlen($prefix.$ignoredTag);
+
+        if (strtolower($cursor->getText($position, $length)) !== strtolower($prefix.$ignoredTag)) {
+            return false;
+        }
+
+        return $this->isTagBoundary($cursor->getCharacter($position + $length));
+    }
+
+    /**
+     * Check if the character is a tag boundary.
+     */
+    protected function isTagBoundary(?string $character): bool
+    {
+        if ($character === null || $character === '>') {
+            return true;
+        }
+
+        return ctype_space($character) || $character === '/';
     }
 }

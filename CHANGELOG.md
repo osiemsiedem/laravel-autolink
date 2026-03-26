@@ -3,6 +3,9 @@
 ## v10.0.0 (2026-03-26)
 
 - Added support for Laravel 13.0.
+- Fixed ignored tag detection so it matches full tag names case-insensitively.
+- Fixed email parsing to reject malformed local-parts with leading, trailing, or repeated dots.
+- Fixed `www.` parsing after Unicode punctuation boundaries.
 
 ## v9.0.0 (2025-02-25)
 

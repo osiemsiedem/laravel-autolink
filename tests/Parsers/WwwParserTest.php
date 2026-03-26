@@ -34,4 +34,14 @@ final class WwwParserTest extends TestCase
 
         $this->assertNull($parser->parse($cursor));
     }
+
+    public function test_unicode_punctuation_is_treated_as_a_boundary(): void
+    {
+        $cursor = new Cursor("\u{201C}www.example.com");
+        $parser = new WwwParser;
+
+        $cursor->next(1);
+
+        $this->assertInstanceOf(Element::class, $parser->parse($cursor));
+    }
 }

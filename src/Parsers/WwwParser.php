@@ -43,7 +43,7 @@ class WwwParser extends AbstractUrlParser
 
         $boundary = $cursor->getCharacter($start - 1);
 
-        if (! is_null($boundary) && ! ctype_space($boundary) && ! ctype_punct($boundary)) {
+        if (! is_null($boundary) && ! $this->isBoundary($boundary)) {
             return null;
         }
 
@@ -64,5 +64,17 @@ class WwwParser extends AbstractUrlParser
         $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
 
         return new UrlElement($title, "http://{$title}", $position['start'], $position['end']);
+    }
+
+    /**
+     * Check if the character is a boundary character.
+     */
+    protected function isBoundary(string $character): bool
+    {
+        if ($this->isWhitespace($character)) {
+            return true;
+        }
+
+        return preg_match('/[\p{P}\p{S}]/u', $character) === 1;
     }
 }

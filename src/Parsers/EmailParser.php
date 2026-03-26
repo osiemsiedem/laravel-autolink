@@ -93,7 +93,21 @@ class EmailParser extends AbstractParser
 
         $position = $this->trimDelimeters($cursor, $start, $end);
 
+        if (is_null($position)) {
+            $cursor->setState($state);
+
+            return null;
+        }
+
         $title = $cursor->getText($position['start'], $position['end'] - $position['start']);
+
+        [$localPart] = explode('@', $title, 2);
+
+        if ($localPart === '' || str_starts_with($localPart, '.') || str_ends_with($localPart, '.') || str_contains($localPart, '..')) {
+            $cursor->setState($state);
+
+            return null;
+        }
 
         $url = "mailto:{$title}";
 

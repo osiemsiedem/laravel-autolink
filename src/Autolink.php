@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink;
 
 use Illuminate\Support\HtmlString;
+use OsiemSiedem\Autolink\Contracts\Element;
 
 class Autolink
 {
@@ -34,7 +35,7 @@ class Autolink
     /**
      * Parse the text.
      *
-     * @return \OsiemSiedem\Autolink\Contracts\Element[]
+     * @return Element[]
      */
     public function parse(string $text): array
     {

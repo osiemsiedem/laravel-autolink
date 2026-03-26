@@ -1,11 +1,10 @@
-* text=auto
+* text=auto eol=lf
 
 /tests export-ignore
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
-/.styleci.yml export-ignore
 /CHANGELOG.md export-ignore
-/coverage.xml export-ignore
 /phpunit.xml.dist export-ignore
+/pint.json export-ignore
 /README.md export-ignore

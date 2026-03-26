@@ -10,8 +10,8 @@ A Laravel package for converting URLs in a given string of text into clickable l
 
 ## Requirements
 
-- PHP >= 8.2
-- Laravel >= 12.0
+- PHP >= 8.3
+- Laravel >= 13.0
 
 ## Installation
 

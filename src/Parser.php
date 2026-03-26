@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OsiemSiedem\Autolink;
 
 use Illuminate\Support\Arr;
+use OsiemSiedem\Autolink\Contracts\Element;
 use OsiemSiedem\Autolink\Contracts\Parser as ElementParser;
 
 class Parser
@@ -15,7 +16,7 @@ class Parser
     protected array $ignoredTags = ['a', 'pre', 'code', 'kbd', 'script'];
 
     /**
-     * @var array<string, \OsiemSiedem\Autolink\Contracts\Parser[]>
+     * @var array<string, ElementParser[]>
      */
     protected array $elementParsers = [];
 
@@ -46,7 +47,7 @@ class Parser
     /**
      * Parse the text.
      *
-     * @return \OsiemSiedem\Autolink\Contracts\Element[]
+     * @return Element[]
      */
     public function parse(string $text): array
     {
@@ -93,7 +94,7 @@ class Parser
                 continue;
             }
 
-            /** @var \OsiemSiedem\Autolink\Contracts\Parser[]|null $parsers */
+            /** @var ElementParser[]|null $parsers */
             $parsers = Arr::get($this->elementParsers, $character);
 
             if (is_null($parsers)) {

@@ -1,5 +1,9 @@
 # Release Notes
 
+## v10.0.0 (2026-03-26)
+
+- Added support for Laravel 13.0.
+
 ## v9.0.0 (2025-02-25)
 
 - Added support for Laravel 12.0.

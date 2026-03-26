@@ -30,7 +30,7 @@ class BaseElement implements Element
     protected $end;
 
     /**
-     * @var \Spatie\Html\Attributes
+     * @var Attributes
      */
     protected $attributes;
 

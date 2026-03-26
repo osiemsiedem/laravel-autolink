@@ -10,24 +10,14 @@ use Illuminate\Support\ServiceProvider;
 class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
-     * Perform post-registration booting of services.
+     * {@inheritDoc}
      */
-    public function boot(): void
+    public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/autolink.php', 'autolink'
         );
 
-        $this->publishes([
-            __DIR__.'/../config/autolink.php' => config_path('autolink.php'),
-        ], 'config');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function register(): void
-    {
         $this->app->singleton('osiemsiedem.autolink.parser', function ($app) {
             $config = $app['config']->get('autolink');
 
@@ -55,6 +45,18 @@ class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvi
         $this->app->singleton('osiemsiedem.autolink', function ($app) {
             return new Autolink($app['osiemsiedem.autolink.parser'], $app['osiemsiedem.autolink.renderer']);
         });
+    }
+
+    /**
+     * Perform post-registration booting of services.
+     */
+    public function boot(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/autolink.php' => config_path('autolink.php'),
+            ], 'config');
+        }
     }
 
     /**

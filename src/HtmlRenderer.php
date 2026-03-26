@@ -6,6 +6,7 @@ namespace OsiemSiedem\Autolink;
 
 use Illuminate\Support\HtmlString;
 use OsiemSiedem\Autolink\Contracts\Filter;
+use OsiemSiedem\Autolink\Elements\BaseElement;
 use Spatie\Html\Elements\A;
 
 class HtmlRenderer
@@ -25,7 +26,7 @@ class HtmlRenderer
     /**
      * Render the elements in the given text.
      *
-     * @param  \OsiemSiedem\Autolink\Elements\BaseElement[]  $elements
+     * @param  BaseElement[]  $elements
      */
     public function render(string $text, array $elements, ?callable $callback = null): HtmlString
     {

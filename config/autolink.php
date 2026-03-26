@@ -1,6 +1,11 @@
 <?php
 
 declare(strict_types=1);
+use OsiemSiedem\Autolink\Filters\LimitLengthFilter;
+use OsiemSiedem\Autolink\Filters\TrimFilter;
+use OsiemSiedem\Autolink\Parsers\EmailParser;
+use OsiemSiedem\Autolink\Parsers\UrlParser;
+use OsiemSiedem\Autolink\Parsers\WwwParser;
 
 return [
     /*
@@ -24,8 +29,8 @@ return [
     |
     */
     'filters' => [
-        \OsiemSiedem\Autolink\Filters\TrimFilter::class,
-        \OsiemSiedem\Autolink\Filters\LimitLengthFilter::class,
+        TrimFilter::class,
+        LimitLengthFilter::class,
     ],
 
     /*
@@ -35,8 +40,8 @@ return [
     |
     */
     'parsers' => [
-        \OsiemSiedem\Autolink\Parsers\UrlParser::class,
-        \OsiemSiedem\Autolink\Parsers\WwwParser::class,
-        \OsiemSiedem\Autolink\Parsers\EmailParser::class,
+        UrlParser::class,
+        WwwParser::class,
+        EmailParser::class,
     ],
 ];

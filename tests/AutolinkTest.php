@@ -18,7 +18,7 @@ final class AutolinkTest extends TestCase
     private $autolink;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function setUp(): void
     {

@@ -24,7 +24,7 @@ class LimitLengthFilter implements Filter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function filter(Element $element): Element
     {

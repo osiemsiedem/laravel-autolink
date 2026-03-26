@@ -24,7 +24,7 @@ class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvi
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function register(): void
     {
@@ -58,7 +58,7 @@ class AutolinkServiceProvider extends ServiceProvider implements DeferrableProvi
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function provides()
     {

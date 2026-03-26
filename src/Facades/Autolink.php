@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
 class Autolink extends Facade
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected static function getFacadeAccessor()
     {

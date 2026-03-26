@@ -11,7 +11,7 @@ use OsiemSiedem\Autolink\Elements\EmailElement;
 class TrimFilter implements Filter
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function filter(Element $element): Element
     {
